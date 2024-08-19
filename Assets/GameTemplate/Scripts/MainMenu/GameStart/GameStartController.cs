@@ -1,5 +1,6 @@
 ﻿using GameTemplate.Scripts.MainMenu.Interfaces;
 using UnityEditor;
+using UnityEngine;
 
 namespace GameTemplate.Scripts.MainMenu.GameStart
 {
@@ -8,9 +9,15 @@ namespace GameTemplate.Scripts.MainMenu.GameStart
         public override void PerformRequiredAction()
         {
             
-            SceneTransition.Instance.LoadScene(1);
+            //TODO: add logic to start game
+            Debug.Log($"Game started");
+            // SceneTransition.Instance.LoadScene(1);
             
         }
+
+        #region Builder
+
+        
 
         public class Builder : GenericBuilder<GameStartController>
         {
@@ -27,5 +34,7 @@ namespace GameTemplate.Scripts.MainMenu.GameStart
             }
 
         } 
+        
+        #endregion
     }
 }
