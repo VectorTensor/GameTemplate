@@ -3,8 +3,8 @@
     public abstract class GenericBuilder<T>
     {
         
-            protected IGameActionModel _model;
-            protected IGameActionView _view;
+            protected IGameActionModel _model = null;
+            protected IGameActionView _view = null;
 
             public GenericBuilder<T> WithViews(IGameActionView v)
             {

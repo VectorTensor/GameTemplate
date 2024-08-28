@@ -6,6 +6,7 @@ namespace GameTemplate.Scripts.MainMenu.GameStart
 {
     public class GameStartController:ButtonActionController
     {
+        private GameStartView _view;
         public override void PerformRequiredAction()
         {
             
@@ -25,10 +26,12 @@ namespace GameTemplate.Scripts.MainMenu.GameStart
             public override GameStartController Build()
             {
                 
+                
                 return new GameStartController
                 {
-                    _model = this._model,
-                    _view = this._view 
+                    _view = (GameStartView) this._view 
+                    
+                    
                 };
                 
             }

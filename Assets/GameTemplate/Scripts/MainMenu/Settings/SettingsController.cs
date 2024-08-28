@@ -1,15 +1,41 @@
 ﻿using GameTemplate.Scripts.MainMenu.Interfaces;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace GameTemplate.Scripts.MainMenu.Settings
 {
-    public class SettingsController : ButtonActionController 
+    public class SettingsController : ButtonActionController
     {
+        private SettingsView _view;
         public override void PerformRequiredAction()
         {
             
             //TODO: add logic to start game
             Debug.Log($"Settings opened");
+            
+        }
+
+        private void ToggleValueChanged(bool value)
+        {
+            Debug.Log($"Toggle {value}");
+            
+        }
+
+        private SettingsController()
+        {
+
+        }
+
+        private void InitializeActions()
+        {
+            _view.OnToggleClicked += ToggleValueChanged;
+        }
+
+        ~SettingsController()
+        {
+            
+            _view.OnToggleClicked -= ToggleValueChanged;
             
         }
         
@@ -19,13 +45,14 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         {
             public override SettingsController Build()
             {
-                
-                return new SettingsController
+                var s = new SettingsController
                 {
-                    _model = this._model,
-                    _view = this._view 
+
+                    _view = (SettingsView)this._view
                 };
-                
+                s.InitializeActions();
+
+                return s;
             }
         }
         #endregion

@@ -11,6 +11,7 @@ namespace GameTemplate.Scripts.MainMenu
 
         [SerializeField] private GameStartView gameStartView;
         private GameStartController _gameStartController;
+        [SerializeField] private SettingsView settingsView;
         private SettingsController _settingsController;
         [SerializeField] private Button playButton;
         [SerializeField] private Button settingsButton;
@@ -20,7 +21,7 @@ namespace GameTemplate.Scripts.MainMenu
             
             _gameStartController = new GameStartController.Builder().WithViews(gameStartView).Build();
             playButton.onClick.AddListener(_gameStartController.PerformRequiredAction);
-            _settingsController = new SettingsController.Builder().Build();
+            _settingsController = new SettingsController.Builder().WithViews(settingsView).Build();
             settingsButton.onClick.AddListener(_settingsController.PerformRequiredAction);
             
             

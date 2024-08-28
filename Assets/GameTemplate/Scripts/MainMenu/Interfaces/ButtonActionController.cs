@@ -2,8 +2,6 @@
 {
     public abstract class ButtonActionController
     {
-        protected IGameActionModel _model;
-        protected IGameActionView _view;
         
         
 
