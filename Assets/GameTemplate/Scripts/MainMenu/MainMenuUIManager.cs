@@ -1,4 +1,5 @@
 ﻿using System;
+using DependencyInjection;
 using GameTemplate.Scripts.MainMenu.GameStart;
 using GameTemplate.Scripts.MainMenu.Settings;
 using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 
 namespace GameTemplate.Scripts.MainMenu
 {
-    public class MainMenuUIManager:MonoBehaviour
+    public class MainMenuUIManager:MonoBehaviour,IDependencyProvider
     {
 
         [SerializeField] private GameStartView gameStartView;
@@ -29,8 +30,12 @@ namespace GameTemplate.Scripts.MainMenu
                 .Build();
             settingsButton.onClick.AddListener(_settingsController.PerformRequiredAction);
             
-            
-            
         }
+
+        [Provide]
+        public GameSettings ProvideGameSettings()
+        {
+            return gameSettings;
+        } 
     }
 }

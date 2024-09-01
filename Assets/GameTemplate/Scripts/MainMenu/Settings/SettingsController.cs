@@ -1,9 +1,10 @@
-﻿using GameTemplate.Scripts.MainMenu.Interfaces;
+﻿using System.Diagnostics;
+using GameTemplate.Scripts.MainMenu.Interfaces;
 using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
 using GameTemplate.Scripts.MainMenu.Settings.Services;
 using Unity.VisualScripting;
-using UnityEngine;
 using UnityEngine.PlayerLoop;
+using Debug = UnityEngine.Debug;
 
 namespace GameTemplate.Scripts.MainMenu.Settings
 {
@@ -23,7 +24,12 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         private void ToggleValueChanged(ToggleTypeSettings type ,bool value)
         {
             Debug.Log($"Toggle {value}");
-            
+            ISettingOptionService settingsOptService = type switch
+            {
+                ToggleTypeSettings.Music => new MusicSettingOption(),
+                ToggleTypeSettings.Sound => new SoundSettingOption()
+            };
+
         }
 
         private SettingsController()

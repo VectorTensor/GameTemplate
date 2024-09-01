@@ -12,12 +12,14 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         
         public event Action<ToggleTypeSettings, bool> OnToggleClicked;
 
-        [SerializeField] private CustomToggle customToggle;
-        [SerializeField] private List<ToggleAction> toggleAction;
+        [SerializeField] private List<CustomToggle> customToggles;
 
         private void Awake()
         {
-            customToggle.onToggleClicked += ToggleHandle;
+            foreach (var customToggle in customToggles)
+            {
+                customToggle.onToggleClicked += ToggleHandle;
+            }
             
             
             
@@ -33,7 +35,10 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         private void OnDestroy()
         {
 
-            customToggle.onToggleClicked -= ToggleHandle;
+            foreach (var customToggle in customToggles)
+            {
+                customToggle.onToggleClicked -= ToggleHandle;
+            }
 
         }
     }
