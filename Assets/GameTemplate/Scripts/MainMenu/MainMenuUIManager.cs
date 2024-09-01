@@ -1,6 +1,7 @@
 ﻿using System;
 using GameTemplate.Scripts.MainMenu.GameStart;
 using GameTemplate.Scripts.MainMenu.Settings;
+using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,13 +16,17 @@ namespace GameTemplate.Scripts.MainMenu
         private SettingsController _settingsController;
         [SerializeField] private Button playButton;
         [SerializeField] private Button settingsButton;
+        [SerializeField] private GameSettings gameSettings;
 
         public void Awake()
         {
             
             _gameStartController = new GameStartController.Builder().WithViews(gameStartView).Build();
             playButton.onClick.AddListener(_gameStartController.PerformRequiredAction);
-            _settingsController = new SettingsController.Builder().WithViews(settingsView).Build();
+            _settingsController = new SettingsController.Builder()
+                .WithViews(settingsView)
+                .WithModel(gameSettings)
+                .Build();
             settingsButton.onClick.AddListener(_settingsController.PerformRequiredAction);
             
             

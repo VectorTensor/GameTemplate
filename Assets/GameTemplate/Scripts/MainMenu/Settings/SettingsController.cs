@@ -1,4 +1,5 @@
 ﻿using GameTemplate.Scripts.MainMenu.Interfaces;
+using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
 using GameTemplate.Scripts.MainMenu.Settings.Services;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
     public class SettingsController : ButtonActionController
     {
         private SettingsView _view;
+        private GameSettings _gameSettings;
         
         public override void PerformRequiredAction()
         {
@@ -50,7 +52,8 @@ namespace GameTemplate.Scripts.MainMenu.Settings
                 var s = new SettingsController
                 {
 
-                    _view = (SettingsView)this._view
+                    _view = (SettingsView)this._view,
+                    _gameSettings = (GameSettings) this._model
                 };
                 s.InitializeActions();
 
