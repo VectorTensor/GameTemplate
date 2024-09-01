@@ -32,7 +32,7 @@ namespace GameTemplate.Scripts.ReuseableViews
         {
             
             SetToggleType(ToggleType.On);
-            onToggleClicked?.Invoke(false);
+            onToggleClicked?.Invoke(true);
         }
         public event Action<bool> onToggleClicked;
         
