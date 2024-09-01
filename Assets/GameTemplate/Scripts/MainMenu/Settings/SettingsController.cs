@@ -1,4 +1,5 @@
 ﻿using GameTemplate.Scripts.MainMenu.Interfaces;
+using GameTemplate.Scripts.MainMenu.Settings.Services;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -8,6 +9,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
     public class SettingsController : ButtonActionController
     {
         private SettingsView _view;
+        
         public override void PerformRequiredAction()
         {
             
@@ -16,7 +18,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
             
         }
 
-        private void ToggleValueChanged(bool value)
+        private void ToggleValueChanged(ToggleTypeSettings type ,bool value)
         {
             Debug.Log($"Toggle {value}");
             

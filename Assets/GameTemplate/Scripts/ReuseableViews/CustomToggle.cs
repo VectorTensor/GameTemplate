@@ -1,4 +1,5 @@
 ﻿using System;
+using GameTemplate.Scripts.MainMenu.Settings.Services;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,12 +8,15 @@ namespace GameTemplate.Scripts.ReuseableViews
 {
     public class CustomToggle : MonoBehaviour
     {
+        [SerializeField] private ToggleTypeSettings settingType;
         
         private ToggleType _toggleType;
 
         [SerializeField] private GameObject toggleOn;
 
         [SerializeField] private GameObject toggleOff;
+        
+        public event Action<ToggleTypeSettings, bool> onToggleClicked;
 
         private void Start()
         {
@@ -24,7 +28,7 @@ namespace GameTemplate.Scripts.ReuseableViews
         private void toggleOnHandle()
         {
             SetToggleType(ToggleType.Off);
-            onToggleClicked?.Invoke(false);
+            onToggleClicked?.Invoke(settingType,false);
             
         }
 
@@ -32,9 +36,8 @@ namespace GameTemplate.Scripts.ReuseableViews
         {
             
             SetToggleType(ToggleType.On);
-            onToggleClicked?.Invoke(true);
+            onToggleClicked?.Invoke(settingType,true);
         }
-        public event Action<bool> onToggleClicked;
         
         public void SetToggleType(ToggleType toggleType)
         {
