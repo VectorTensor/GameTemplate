@@ -3,6 +3,7 @@ using DependencyInjection;
 using GameTemplate.Scripts.MainMenu.GameStart;
 using GameTemplate.Scripts.MainMenu.Settings;
 using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
+using GameTemplate.Scripts.MainMenu.Settings.Services;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,5 +49,11 @@ namespace GameTemplate.Scripts.MainMenu
         {
             return gameSettings;
         } 
+        
+        [Inject]
+        public SettingSaveService ProvideSettingSaveService()
+        {
+            return new SettingSaveService();
+        }
     }
 }

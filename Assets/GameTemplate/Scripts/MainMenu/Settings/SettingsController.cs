@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
+using DependencyInjection;
 using GameTemplate.Scripts.MainMenu.Interfaces;
 using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
 using GameTemplate.Scripts.MainMenu.Settings.Services;
@@ -13,7 +15,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         private SettingsView _view;
         private GameSettings _gameSettings;
         private GameSettingsBuffer _settingsBuffer;
-        
+        [Inject] private SettingSaveService _saveService;
         public override void PerformRequiredAction()
         {
             
@@ -38,6 +40,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         private void SaveSettings()
         {
             
+            _saveService.Save();
             
             
         }
