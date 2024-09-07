@@ -6,7 +6,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings.Services
     public class SoundSettingOption : ISettingOptionService
     {
         
-        [Inject] private GameSettings _gameSettings;
+        [Inject] private GameSettingsBuffer _gameSettings;
 
 
         public void PerformRequiredAction(bool value)

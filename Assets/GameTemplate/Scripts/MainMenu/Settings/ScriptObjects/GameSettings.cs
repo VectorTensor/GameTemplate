@@ -11,4 +11,10 @@ namespace GameTemplate.Scripts.MainMenu.Settings.ScriptObjects
         public bool sound;
 
     }
+
+    public class GameSettingsBuffer
+    {
+        public bool music;
+        public bool sound;
+    }
 }

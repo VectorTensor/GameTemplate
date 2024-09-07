@@ -18,18 +18,29 @@ namespace GameTemplate.Scripts.MainMenu
         [SerializeField] private Button playButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private GameSettings gameSettings;
+        private GameSettingsBuffer gbf;
+        
 
         public void Awake()
         {
             
             _gameStartController = new GameStartController.Builder().WithViews(gameStartView).Build();
             playButton.onClick.AddListener(_gameStartController.PerformRequiredAction);
+            gbf = new GameSettingsBuffer();
             _settingsController = new SettingsController.Builder()
+                .WithBuffer(gbf)
                 .WithViews(settingsView)
                 .WithModel(gameSettings)
                 .Build();
             settingsButton.onClick.AddListener(_settingsController.PerformRequiredAction);
+            _settingsController.InitializeSettings();
             
+        }
+
+        [Provide]
+        public GameSettingsBuffer ProvideBuffer()
+        {
+            return gbf;
         }
 
         [Provide]

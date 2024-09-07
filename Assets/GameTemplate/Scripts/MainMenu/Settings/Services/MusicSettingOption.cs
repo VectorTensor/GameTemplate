@@ -5,13 +5,14 @@ namespace GameTemplate.Scripts.MainMenu.Settings.Services
 {
     public class MusicSettingOption:ISettingOptionService
     {
-        [Inject] private GameSettings _gameSettings;
+        [Inject] private GameSettingsBuffer _buffer;
+        
 
 
         public void PerformRequiredAction(bool value)
         {
             
-            _gameSettings.music = value;
+            _buffer.music = value;
             
             
         }

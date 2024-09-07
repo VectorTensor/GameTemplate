@@ -530,7 +530,7 @@ MonoBehaviour:
   settingsView: {fileID: 519785340}
   playButton: {fileID: 1462530989}
   settingsButton: {fileID: 235284254}
-  gameSettings: {fileID: 0}
+  gameSettings: {fileID: 11400000, guid: cba658ea12342a148a90ce85c6e1c36f, type: 2}
 --- !u!1 &407708840
 GameObject:
   m_ObjectHideFlags: 0

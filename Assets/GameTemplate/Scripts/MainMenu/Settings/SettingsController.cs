@@ -12,6 +12,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
     {
         private SettingsView _view;
         private GameSettings _gameSettings;
+        private GameSettingsBuffer _settingsBuffer;
         
         public override void PerformRequiredAction()
         {
@@ -32,6 +33,23 @@ namespace GameTemplate.Scripts.MainMenu.Settings
             
             _view.SetToggleOfType(type, value);
 
+        }
+
+        private void SaveSettings()
+        {
+            
+            
+            
+        }
+        
+
+        public void InitializeSettings()
+        {
+            
+            _view.SetToggleOfType(ToggleTypeSettings.Sound, _gameSettings.sound); 
+            _view.SetToggleOfType(ToggleTypeSettings.Music, _gameSettings.music); 
+            _settingsBuffer.music = _gameSettings.music;
+            _settingsBuffer.sound = _gameSettings.sound;
         }
 
         private SettingsController()
@@ -55,13 +73,22 @@ namespace GameTemplate.Scripts.MainMenu.Settings
 
         public class Builder : GenericBuilder<SettingsController>
         {
+            private GameSettingsBuffer _gameSettingsBuffer;
+
+            public Builder WithBuffer(GameSettingsBuffer b)
+            {
+                _gameSettingsBuffer = b;
+
+                return this;
+            } 
             public override SettingsController Build()
             {
                 var s = new SettingsController
                 {
 
                     _view = (SettingsView)this._view,
-                    _gameSettings = (GameSettings) this._model
+                    _gameSettings = (GameSettings) this._model,
+                    _settingsBuffer = _gameSettingsBuffer 
                 };
                 s.InitializeActions();
 
