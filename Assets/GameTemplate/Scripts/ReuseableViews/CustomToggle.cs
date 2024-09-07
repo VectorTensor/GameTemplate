@@ -25,9 +25,16 @@ namespace GameTemplate.Scripts.ReuseableViews
             toggleOff.GetComponent<Button>().onClick.AddListener(toggleOffHandle);
         }
 
+        public ToggleTypeSettings GetSettingType()
+        {
+
+            return settingType;
+
+        }
+
         private void toggleOnHandle()
         {
-            SetToggleType(ToggleType.Off);
+            // SetToggleType(ToggleType.Off);
             onToggleClicked?.Invoke(settingType,false);
             
         }
@@ -35,7 +42,7 @@ namespace GameTemplate.Scripts.ReuseableViews
         private void toggleOffHandle()
         {
             
-            SetToggleType(ToggleType.On);
+            // SetToggleType(ToggleType.On);
             onToggleClicked?.Invoke(settingType,true);
         }
         

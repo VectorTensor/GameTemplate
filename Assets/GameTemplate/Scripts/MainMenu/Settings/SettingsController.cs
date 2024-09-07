@@ -29,6 +29,8 @@ namespace GameTemplate.Scripts.MainMenu.Settings
                 ToggleTypeSettings.Music => new MusicSettingOption(),
                 ToggleTypeSettings.Sound => new SoundSettingOption()
             };
+            
+            _view.SetToggleOfType(type, value);
 
         }
 

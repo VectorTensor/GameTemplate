@@ -25,6 +25,19 @@ namespace GameTemplate.Scripts.MainMenu.Settings
             
         }
 
+        public void SetToggleOfType(ToggleTypeSettings t, bool toggle)
+        {
+            
+            foreach (var customToggle in customToggles)
+            {
+                if (customToggle.GetSettingType()== t)
+                {
+                    customToggle.SetToggleType(toggle ? ToggleType.On : ToggleType.Off);
+                }
+            }
+            
+        }
+
         private void ToggleHandle(ToggleTypeSettings type, bool value)
         {
             
