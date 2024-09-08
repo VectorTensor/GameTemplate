@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using DependencyInjection;
 using GameTemplate.Scripts.MainMenu.Interfaces;
@@ -15,7 +16,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         private SettingsView _view;
         private GameSettings _gameSettings;
         private GameSettingsBuffer _settingsBuffer;
-        [Inject] private SettingSaveService _saveService;
+        private SettingSaveService _saveService;
         public override void PerformRequiredAction()
         {
             
@@ -27,14 +28,26 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         private void ToggleValueChanged(ToggleTypeSettings type ,bool value)
         {
             Debug.Log($"Toggle {value}");
-            ISettingOptionService settingsOptService = type switch
-            {
-                ToggleTypeSettings.Music => new MusicSettingOption(),
-                ToggleTypeSettings.Sound => new SoundSettingOption()
-            };
+            UpdateBufferAccordingToChange(type, value);
             
             _view.SetToggleOfType(type, value);
 
+        }
+
+        private void UpdateBufferAccordingToChange(ToggleTypeSettings type, bool value)
+        {
+            switch (type)
+            {
+                case ToggleTypeSettings.Music:
+                    _settingsBuffer.music = value;
+                    break;
+                case ToggleTypeSettings.Sound:
+                    _settingsBuffer.sound = value;
+                    break;
+
+                default:
+                    throw new Exception($"{type} not supported"); 
+            }
         }
 
         private void SaveSettings()
@@ -57,12 +70,14 @@ namespace GameTemplate.Scripts.MainMenu.Settings
 
         private SettingsController()
         {
+            
 
         }
 
         private void InitializeActions()
         {
             _view.OnToggleClicked += ToggleValueChanged;
+            _view.OnSaveClicked +=  SaveSettings;
         }
 
         ~SettingsController()
@@ -70,6 +85,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
             
             _view.OnToggleClicked -= ToggleValueChanged;
             
+            _view.OnSaveClicked -=  SaveSettings;
         }
         
         #region Builder
@@ -77,13 +93,22 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         public class Builder : GenericBuilder<SettingsController>
         {
             private GameSettingsBuffer _gameSettingsBuffer;
+            private SettingSaveService _saveService;
 
             public Builder WithBuffer(GameSettingsBuffer b)
             {
                 _gameSettingsBuffer = b;
 
                 return this;
-            } 
+            }
+
+            public Builder WithService(SettingSaveService s)
+            {
+
+                _saveService = s;
+                return this;
+
+            }
             public override SettingsController Build()
             {
                 var s = new SettingsController
@@ -91,7 +116,8 @@ namespace GameTemplate.Scripts.MainMenu.Settings
 
                     _view = (SettingsView)this._view,
                     _gameSettings = (GameSettings) this._model,
-                    _settingsBuffer = _gameSettingsBuffer 
+                    _settingsBuffer = _gameSettingsBuffer ,
+                    _saveService = this._saveService
                 };
                 s.InitializeActions();
 

@@ -19,6 +19,7 @@ namespace GameTemplate.Scripts.MainMenu
         [SerializeField] private Button playButton;
         [SerializeField] private Button settingsButton;
         [SerializeField] private GameSettings gameSettings;
+        [SerializeField] private SettingSaveService saveService;
         private GameSettingsBuffer gbf;
         
 
@@ -27,8 +28,8 @@ namespace GameTemplate.Scripts.MainMenu
             
             _gameStartController = new GameStartController.Builder().WithViews(gameStartView).Build();
             playButton.onClick.AddListener(_gameStartController.PerformRequiredAction);
-            gbf = new GameSettingsBuffer();
             _settingsController = new SettingsController.Builder()
+                .WithService(saveService)
                 .WithBuffer(gbf)
                 .WithViews(settingsView)
                 .WithModel(gameSettings)
@@ -41,6 +42,7 @@ namespace GameTemplate.Scripts.MainMenu
         [Provide]
         public GameSettingsBuffer ProvideBuffer()
         {
+            gbf = new GameSettingsBuffer();
             return gbf;
         }
 
@@ -50,10 +52,6 @@ namespace GameTemplate.Scripts.MainMenu
             return gameSettings;
         } 
         
-        [Inject]
-        public SettingSaveService ProvideSettingSaveService()
-        {
-            return new SettingSaveService();
-        }
+       
     }
 }
