@@ -13,21 +13,45 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         
         public event Action<ToggleTypeSettings, bool> OnToggleClicked;
         [SerializeField] private Button saveButton;
+        [SerializeField] private Button backButton;
 
         [SerializeField] private List<CustomToggle> customToggles;
+        [SerializeField] private GameObject settingsPanel;
         
         public event Action OnSaveClicked;
 
+        public event Action OnBackClicked;
         private void Awake()
         {
             saveButton.onClick.AddListener(() =>
             {
                 OnSaveClicked?.Invoke();
             });
+
+            backButton.onClick.AddListener(() =>
+            {
+                
+                OnBackClicked?.Invoke();
+                Close();
+
+            });
             foreach (var customToggle in customToggles)
             {
                 customToggle.onToggleClicked += ToggleHandle;
             }
+        }
+
+        public void Open()
+        {
+            
+            gameObject.SetActive(true);
+        }
+
+        public void Close()
+        {
+            
+            gameObject.SetActive(false);
+            
         }
 
 

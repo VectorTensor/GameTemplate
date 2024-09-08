@@ -528,7 +528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStartView: {fileID: 1500196789}
-  settingsView: {fileID: 519785340}
+  settingsView: {fileID: 497474086}
   playButton: {fileID: 1462530989}
   settingsButton: {fileID: 235284254}
   gameSettings: {fileID: 11400000, guid: cba658ea12342a148a90ce85c6e1c36f, type: 2}
@@ -946,13 +946,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 497474085}
+  - component: {fileID: 497474086}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &497474085
 RectTransform:
   m_ObjectHideFlags: 0
@@ -977,6 +978,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &497474086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497474084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7146bff2dad34c93bbffc9b6696ff581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveButton: {fileID: 14142654}
+  backButton: {fileID: 951989185}
+  customToggles:
+  - {fileID: 527856755}
+  settingsPanel: {fileID: 497474084}
 --- !u!1 &519785338
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +1004,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 519785339}
-  - component: {fileID: 519785340}
   m_Layer: 5
   m_Name: SettingOptions
   m_TagString: Untagged
@@ -1015,21 +1032,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -60.406006}
   m_SizeDelta: {x: 0, y: -120.812}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &519785340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519785338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7146bff2dad34c93bbffc9b6696ff581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveButton: {fileID: 14142654}
-  customToggles:
-  - {fileID: 527856755}
 --- !u!1 &521422182
 GameObject:
   m_ObjectHideFlags: 0

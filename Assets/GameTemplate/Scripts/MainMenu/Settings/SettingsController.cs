@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using DependencyInjection;
 using GameTemplate.Scripts.MainMenu.Interfaces;
 using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
 using GameTemplate.Scripts.MainMenu.Settings.Services;
-using Unity.VisualScripting;
-using UnityEngine.PlayerLoop;
 using Debug = UnityEngine.Debug;
 
 namespace GameTemplate.Scripts.MainMenu.Settings
@@ -19,6 +14,8 @@ namespace GameTemplate.Scripts.MainMenu.Settings
         private SettingSaveService _saveService;
         public override void PerformRequiredAction()
         {
+            _view.Open();
+            
             
             //TODO: add logic to start game
             Debug.Log($"Settings opened");
@@ -68,6 +65,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
             _settingsBuffer.sound = _gameSettings.sound;
         }
 
+
         private SettingsController()
         {
             
@@ -86,6 +84,7 @@ namespace GameTemplate.Scripts.MainMenu.Settings
             _view.OnToggleClicked -= ToggleValueChanged;
             
             _view.OnSaveClicked -=  SaveSettings;
+            
         }
         
         #region Builder
