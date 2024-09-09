@@ -63,7 +63,8 @@ namespace SaveAndLoad
 
         public void DeleteAll()
         {
-            throw new System.NotImplementedException();
+            string path = GetPathToFile("GameSave");
+            File.Delete(path);
         }
 
         public IEnumerable<string> ListSaves()
