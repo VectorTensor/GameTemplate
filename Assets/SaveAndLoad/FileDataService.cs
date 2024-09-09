@@ -15,7 +15,7 @@ namespace SaveAndLoad
         {
             
             this.dataPath = Application.persistentDataPath;
-            this.fileExtension = ".json";
+            this.fileExtension = "json";
             this.serializer = serializer;
             
         }
@@ -29,7 +29,19 @@ namespace SaveAndLoad
         public void Save(GameData data, bool overwrite = true)
         {
 
-            throw new System.NotImplementedException();
+            string json = serializer.Serialize<GameData>(data);
+
+            string path = GetPathToFile("GameSave");
+
+            if (File.Exists(path) && !overwrite)
+            {
+                return;
+            }
+            else
+            {
+                File.WriteAllText(path, json);
+                
+            }
 
         }
 
@@ -37,7 +49,11 @@ namespace SaveAndLoad
         public GameData Load(string name)
         {
             
-            throw new System.NotImplementedException();
+            string path = GetPathToFile(name);
+            var data = File.ReadAllText(path);
+
+            return serializer.Deserialize<GameData>(data);
+            
         }
 
         public void Delete(string name)
