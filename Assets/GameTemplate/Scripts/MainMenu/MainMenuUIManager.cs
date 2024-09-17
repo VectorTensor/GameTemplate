@@ -5,6 +5,7 @@ using GameTemplate.Scripts.MainMenu.SaveMenu;
 using GameTemplate.Scripts.MainMenu.Settings;
 using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
 using GameTemplate.Scripts.MainMenu.Settings.Services;
+using SaveAndLoad;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,7 +42,11 @@ namespace GameTemplate.Scripts.MainMenu
                 .Build();
             settingsButton.onClick.AddListener(_settingsController.PerformRequiredAction);
             _settingsController.InitializeSettings();
+            FileDataService fileDataService = new FileDataService(new JsonSerializer());
+            var saveData = fileDataService.Load("GameSave"); 
+            
             _saveController = new SaveController.Builder()
+                .WithModel(saveData)
                 .WithViews(loadView)
                 .Build();
             loadButton.onClick.AddListener(_saveController.PerformRequiredAction);
