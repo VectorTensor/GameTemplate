@@ -1,6 +1,7 @@
 ﻿using System;
 using DependencyInjection;
 using GameTemplate.Scripts.MainMenu.GameStart;
+using GameTemplate.Scripts.MainMenu.SaveMenu;
 using GameTemplate.Scripts.MainMenu.Settings;
 using GameTemplate.Scripts.MainMenu.Settings.ScriptObjects;
 using GameTemplate.Scripts.MainMenu.Settings.Services;
@@ -20,6 +21,10 @@ namespace GameTemplate.Scripts.MainMenu
         [SerializeField] private Button settingsButton;
         [SerializeField] private GameSettings gameSettings;
         [SerializeField] private SettingSaveService saveService;
+        [SerializeField] private Button loadButton;
+        [SerializeField] private LoadView loadView;
+        private SaveController _saveController;
+        
         private GameSettingsBuffer gbf;
         
 
@@ -36,6 +41,12 @@ namespace GameTemplate.Scripts.MainMenu
                 .Build();
             settingsButton.onClick.AddListener(_settingsController.PerformRequiredAction);
             _settingsController.InitializeSettings();
+            _saveController = new SaveController.Builder()
+                .WithViews(loadView)
+                .Build();
+            loadButton.onClick.AddListener(_saveController.PerformRequiredAction);
+            
+            
             
         }
 
