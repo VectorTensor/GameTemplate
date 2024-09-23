@@ -4,27 +4,22 @@
     {
         public Sequence(string name = "Sequence"): base(name){}  
         
-        public override Status Process(){
-            if (currentChild < children.Count)
+        public override Status Process()
+        {
+
+            Status status = Status.Failed;
+
+            foreach (var child in children)
             {
 
-                switch (children[currentChild].Process())
-                {
-                    
-                    case Status.Running:
-                        return Status.Running;
-                    
-                    default:
-                        currentChild++;
-                        return currentChild == children.Count? Status.Done:Status.Running;
-                        
-                    
-                }
+                status = child.Process();
                 
+
             }
 
-            Reset();
-            return Status.Done;
+
+            return status;
+
 
         }
         

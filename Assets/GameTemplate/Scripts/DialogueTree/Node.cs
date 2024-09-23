@@ -4,7 +4,7 @@ namespace GameTemplate.Scripts.DialogueTree
 {
     public class Node
     {
-        public enum Status{Done, Running}
+        public enum Status{Done, Running, Failed}
 
         public readonly string name;
 
