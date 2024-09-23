@@ -2,9 +2,9 @@
 
 namespace GameTemplate.Scripts.DialogueTree
 {
-    public class Tree:Node
+    public class DiagTree:Node
     {
-        public Tree(string name): base(name){}
+        public DiagTree(string name): base(name){}
 
         public override Status Process()
         {

@@ -13,6 +13,10 @@
             {
 
                 status = child.Process();
+                if (status == Status.Failed)
+                {
+                    return Status.Failed;
+                }
                 
 
             }
