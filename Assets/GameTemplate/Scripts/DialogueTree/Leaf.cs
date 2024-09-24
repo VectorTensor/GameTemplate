@@ -13,7 +13,7 @@ namespace GameTemplate.Scripts.DialogueTree
 
         }
         
-        public override void Process(Action onCompleted = null, Action onFailed = null) => this._strategy.Process();
+        public override void Process(Action onCompleted = null, Action onFailed = null) => this._strategy.Process(onCompleted, onFailed);
         
         public override void Reset() => this._strategy.Reset();
 

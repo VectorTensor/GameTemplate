@@ -16,7 +16,6 @@ namespace GameTemplate.Scripts.DialogueTree.Strategies
         {
             Debug.Log(_dialogue);
             onCompleted?.Invoke();
-            return ;
         }
 
         public void Reset()

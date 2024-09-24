@@ -8,16 +8,22 @@ namespace DefaultNamespace.DialougeTest
     public class TestDIag:MonoBehaviour
     {
         public bool st;
+        public bool nt;
         public void Start()
         {
             
-            DiagTree tree = new DiagTree("test");
-            tree.AddChild(new Leaf("hello", new DialogueStrategy("hello")));
-            var seq = new Sequence("seq");
-            seq.AddChild(new Leaf("",new ConditionStrategy(()=> st)));
-            seq.AddChild(new Leaf("",new DialogueStrategy("bye")));
-            tree.AddChild(seq);
-            tree.Process();
+            
+            var root = new Selector("root");
+            var seq1 = new Sequence("seq1");
+            seq1.AddChild(new Leaf("",new ConditionStrategy(()=> st)));
+            seq1.AddChild(new Leaf("",new DialogueStrategy("hi")));
+            
+            var seq2= new Sequence("seq2");
+            seq2.AddChild(new Leaf("",new ConditionStrategy(()=> nt)));
+            seq2.AddChild(new Leaf("",new DialogueStrategy("bye")));
+            root.AddChild(seq1);
+            root.AddChild(seq2);
+            root.Process();
 
 
         }

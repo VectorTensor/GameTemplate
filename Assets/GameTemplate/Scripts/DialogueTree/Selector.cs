@@ -34,7 +34,7 @@ namespace GameTemplate.Scripts.DialogueTree
             }
             children[currentChild].Process(() =>
             {
-                _onCompleted.Invoke(); 
+                _onCompleted?.Invoke(); 
             },
             () =>
             {
