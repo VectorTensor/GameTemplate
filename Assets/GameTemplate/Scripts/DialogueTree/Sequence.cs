@@ -14,22 +14,6 @@ namespace GameTemplate.Scripts.DialogueTree
             _onCompleted = onCompleted;
             _onFailed = onFailed;
 
-            // Status status = Status.Failed;
-            //
-            // foreach (var child in children)
-            // {
-            //
-            //     status = child.Process();
-            //     if (status == Status.Failed)
-            //     {
-            //         return Status.Failed;
-            //     }
-            //     
-            //
-            // }
-            //
-            //
-            // return status;
             RecursiveProcess();
             
         }
