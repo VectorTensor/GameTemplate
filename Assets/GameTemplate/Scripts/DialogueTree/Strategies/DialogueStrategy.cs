@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameTemplate.Scripts.DialogueTree.Strategies
 {
@@ -11,7 +12,7 @@ namespace GameTemplate.Scripts.DialogueTree.Strategies
             _dialogue = dialogue;
             
         }
-        public Node.Status Process()
+        public Node.Status Process(Action onCompleted = null)
         {
             Debug.Log(_dialogue);
             return Node.Status.Done;

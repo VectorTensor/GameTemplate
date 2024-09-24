@@ -1,10 +1,12 @@
-﻿namespace GameTemplate.Scripts.DialogueTree
+﻿using System;
+
+namespace GameTemplate.Scripts.DialogueTree
 {
     public class Sequence: Node
     {
         public Sequence(string name = "Sequence"): base(name){}  
         
-        public override Status Process()
+        public override Status Process(Action onCompleted = null)
         {
 
             Status status = Status.Failed;

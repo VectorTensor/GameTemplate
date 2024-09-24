@@ -1,4 +1,6 @@
-﻿namespace GameTemplate.Scripts.DialogueTree
+﻿using System;
+
+namespace GameTemplate.Scripts.DialogueTree
 {
     public class Leaf:Node
     {
@@ -11,7 +13,7 @@
 
         }
         
-        public override Status Process() => this._strategy.Process();
+        public override Status Process(Action onCompleted = null) => this._strategy.Process();
         
         public override void Reset() => this._strategy.Reset();
 

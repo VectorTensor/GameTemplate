@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GameTemplate.Scripts.DialogueTree
 {
@@ -20,7 +21,7 @@ namespace GameTemplate.Scripts.DialogueTree
 
         public void AddChild(Node child) => children.Add(child);
 
-        public virtual Status Process() => children[currentChild].Process();
+        public virtual Status Process(Action onCompleted = null) => children[currentChild].Process();
 
         public virtual void Reset()
         {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameTemplate.Scripts.DialogueTree
 {
@@ -6,7 +7,7 @@ namespace GameTemplate.Scripts.DialogueTree
     {
         public DiagTree(string name): base(name){}
 
-        public override Status Process()
+        public override Status Process(Action onCompleted = null)
         {
 
             while (currentChild < children.Count)
