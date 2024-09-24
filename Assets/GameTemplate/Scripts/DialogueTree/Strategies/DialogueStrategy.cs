@@ -12,7 +12,7 @@ namespace GameTemplate.Scripts.DialogueTree.Strategies
             _dialogue = dialogue;
             
         }
-        public Node.Status Process(Action onCompleted = null)
+        public void Process(Action onCompleted = null, Action onFailed = null)
         {
             Debug.Log(_dialogue);
             return Node.Status.Done;

@@ -7,25 +7,25 @@ namespace GameTemplate.Scripts.DialogueTree
     {
         public DiagTree(string name): base(name){}
 
-        public override Status Process(Action onCompleted = null)
+        public override void Process(Action onCompleted = null, Action onFailed = null)
         {
 
-            while (currentChild < children.Count)
-            {
-
-                var status = children[currentChild].Process();
-                if (status != Status.Done)
-                {
-
-                    return status;
-
-                }
-
-                currentChild++;
-
-            }
-
-            return Status.Done;
+            // while (currentChild < children.Count)
+            // {
+            //
+            //     var status = children[currentChild].Process();
+            //     if (status != Status.Done)
+            //     {
+            //
+            //         return status;
+            //
+            //     }
+            //
+            //     currentChild++;
+            //
+            // }
+            //
+        // return Status.Done;
 
         }
         

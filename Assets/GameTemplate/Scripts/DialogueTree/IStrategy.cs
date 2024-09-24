@@ -4,7 +4,7 @@ namespace GameTemplate.Scripts.DialogueTree
 {
     public interface IStrategy
     {
-        Node.Status Process(Action onCompleted = null);
+        void Process(Action onCompleted = null, Action onFailed = null);
 
         void Reset()
         {

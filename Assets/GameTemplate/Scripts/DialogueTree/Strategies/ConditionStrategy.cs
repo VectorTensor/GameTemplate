@@ -12,7 +12,7 @@ namespace GameTemplate.Scripts.DialogueTree.Strategies
             _condition = condition;
         }
         
-        public Node.Status Process(Action onCompleted = null) => _condition()?Node.Status.Done:Node.Status.Failed;
+        public void Process(Action onCompleted = null, Action onFailed = null) => _condition()?Node.Status.Done:Node.Status.Failed;
 
     }
 }

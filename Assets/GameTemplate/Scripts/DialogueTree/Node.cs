@@ -21,7 +21,7 @@ namespace GameTemplate.Scripts.DialogueTree
 
         public void AddChild(Node child) => children.Add(child);
 
-        public virtual Status Process(Action onCompleted = null) => children[currentChild].Process();
+        public virtual void Process(Action onCompleted = null, Action onFailed = null) => children[currentChild].Process();
 
         public virtual void Reset()
         {
