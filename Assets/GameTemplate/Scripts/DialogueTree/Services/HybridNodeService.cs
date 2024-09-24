@@ -54,6 +54,13 @@ namespace GameTemplate.Scripts.DialogueTree.Services
             return sel;
 
         }
+
+        public Leaf GetUnConditionalNode(string name, string dialogue)
+        {
+            
+            return new Leaf(name, new DialogueStrategy(dialogue));
+            
+        }
         
         
         
