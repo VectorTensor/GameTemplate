@@ -13,7 +13,7 @@ namespace DefaultNamespace.DialougeTest
         {
             
             
-            var root = new Selector("root");
+            var root = new DiagTree("root");
             var seq1 = new Sequence("seq1");
             seq1.AddChild(new Leaf("",new ConditionStrategy(()=> st)));
             seq1.AddChild(new Leaf("",new DialogueStrategy("hi")));
