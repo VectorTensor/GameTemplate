@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameTemplate.Scripts.DialogueTree.Models;
 using GameTemplate.Scripts.DialogueTree.Strategies;
 using Unity.VisualScripting;
 using UnityEditorInternal;
@@ -27,7 +28,7 @@ namespace GameTemplate.Scripts.DialogueTree.Services
         /// <param name="dialogue">Dialogue you want to show </param>
         /// <param name="condition">Func for the condition</param>
         /// <returns></returns>
-        public Sequence GetDi_Node(string name, string dialogue, Func<bool> condition)
+        public Sequence GetDi_Node(string name, DialogueDto dialogue, Func<bool> condition)
         {
             
             Sequence seq = new Sequence(name);
@@ -55,7 +56,7 @@ namespace GameTemplate.Scripts.DialogueTree.Services
 
         }
 
-        public Leaf GetUnConditionalNode(string name, string dialogue)
+        public Leaf GetUnConditionalNode(string name, DialogueDto dialogue)
         {
             
             return new Leaf(name, new DialogueStrategy(dialogue));

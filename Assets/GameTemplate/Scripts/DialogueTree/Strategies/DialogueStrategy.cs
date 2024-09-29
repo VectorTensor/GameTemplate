@@ -1,12 +1,13 @@
 ﻿using System;
+using GameTemplate.Scripts.DialogueTree.Models;
 using UnityEngine;
 
 namespace GameTemplate.Scripts.DialogueTree.Strategies
 {
     public class DialogueStrategy: IStrategy
     {
-        private string _dialogue;
-        public DialogueStrategy(string dialogue)
+        private DialogueDto _dialogue;
+        public DialogueStrategy(DialogueDto dialogue)
         {
             
             _dialogue = dialogue;
@@ -14,13 +15,12 @@ namespace GameTemplate.Scripts.DialogueTree.Strategies
         }
         public void Process(Action onCompleted = null, Action onFailed = null)
         {
-            Debug.Log(_dialogue);
+            Debug.Log(_dialogue.dialogue);
             onCompleted?.Invoke();
         }
 
-        public void Reset()
-        {
-            _dialogue = "";
-        }
+        // public void Reset() {
+        //     _dialogue = "";
+        // }
     }
 }
