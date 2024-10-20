@@ -33,9 +33,9 @@ namespace DefaultNamespace.DialougeTest
             var diag = HybridNodeService.GetInstance().GetBotChoiceNode("diag", new List<Sequence>(){seq1,seq2});                                                                                                                                                                                               
             root.AddChild(diag);
             var diag2 = HybridNodeService.GetInstance().GetUnConditionalNode("diag2", d3);
-            root.AddChild(diag2);
             var diag3 = HybridNodeService.GetInstance().GetUnConditionalNode("diag3", d4);
             root.AddChild(diag3);
+            root.AddChild(diag2);
             root.Process();
             
                                 

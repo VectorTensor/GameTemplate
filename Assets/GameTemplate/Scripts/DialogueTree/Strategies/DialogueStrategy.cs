@@ -16,7 +16,8 @@ namespace GameTemplate.Scripts.DialogueTree.Strategies
         public void Process(Action onCompleted = null, Action onFailed = null)
         {
             Debug.Log(_dialogue.dialogue);
-            onCompleted?.Invoke();
+            DialogueController.Instance.SetDialogue(_dialogue, onCompleted);
+            // onCompleted?.Invoke();
         }
 
         // public void Reset() {
