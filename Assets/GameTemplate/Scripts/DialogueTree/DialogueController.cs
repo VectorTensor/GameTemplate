@@ -22,17 +22,13 @@ namespace GameTemplate.Scripts.DialogueTree
             
         }
 
-        public void DialogueCompleted()
+        private void DialogueCompleted()
         {
             
             dialogueView.nextButtonPressed -= DialogueCompleted;
-            if (_waitForDialogueCompletion)
-            {
-                
-                _waitForDialogueCompletion = false;
-                _onCompleted?.Invoke();
-                
-            }
+            if (!_waitForDialogueCompletion) return;
+            _waitForDialogueCompletion = false;
+            _onCompleted?.Invoke();
 
 
 
